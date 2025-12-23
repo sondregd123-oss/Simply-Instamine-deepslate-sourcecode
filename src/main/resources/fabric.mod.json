@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "kunadas-deepslate-instamine",
+  "version": "1.0.0",
+  "name": "Kunada's Deepslate Instamine",
+  "description": "Instantly mine Deepslate with Efficiency V and Haste II!",
+  "authors": [
+    "Kunada"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.kunada.instamine.KunadasDeepslateInstamine"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.2",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

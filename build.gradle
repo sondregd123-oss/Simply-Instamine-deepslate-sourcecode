@@ -1,0 +1,33 @@
+plugins {
+    id 'fabric-loom' version '1.14-SNAPSHOT'
+    id 'maven-publish'
+}
+
+group = 'com.kunada'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25) // Tell it to look for your version 25
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21 // This ensures the mod still works on Minecraft's Java 21
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.11'
+    mappings loom.officialMojangMappings()
+
+    modImplementation 'net.fabricmc:fabric-loader:0.18.2'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.140.2+1.21.11'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // This part is the "Magic":
+    // It uses JDK 25 to build, but makes the mod work on Java 21 (Minecraft's version)
+    it.options.release = 21
+    it.options.encoding = 'UTF-8'
+}
